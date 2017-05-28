@@ -9,4 +9,4 @@ sass:
   style:            :compressed
 
 markdown: kramdown
-#gems: [bootstrap, autoprefixer-rails, jekyll-assets, jekyll-paginate, jekyll-gist]
+gems: [bootstrap, autoprefixer-rails, jekyll-assets, jekyll-paginate, jekyll-gist]
