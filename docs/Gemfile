@@ -1,0 +1,15 @@
+source 'https://rubygems.org'
+
+gem 'github-pages', group: :jekyll_plugins
+
+gem 'jekyll-theme-shoreline-docs'
+
+# If you have any plugins, put them here!
+group :jekyll_plugins do
+ gem "jekyll-github-metadata", "~> 2.3.1"
+ gem 'bootstrap', '~> 4.0.0.alpha6'
+ gem 'autoprefixer-rails'
+ gem 'jekyll-assets'
+ gem 'jekyll-paginate'
+ gem 'jekyll-gist'
+end
