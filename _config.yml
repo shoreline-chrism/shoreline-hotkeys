@@ -1,0 +1,22 @@
+title: Hotkey Help
+description: Get things done faster with hotkeys and text expansion
+show_downloads: true
+
+theme: minima
+
+# Where things are
+source:       src
+destination:  docs
+
+
+sass:
+  sass_dir:         _sass
+  style:            :compressed
+
+markdown: kramdown
+
+gems: [bootstrap, autoprefixer-rails, jekyll-assets]
+exclude: [Gemfile, Gemfile.lock]
+
+encoding:             "utf-8"
+markdown_ext:         "markdown,mkdown,mkdn,mkd,md"
