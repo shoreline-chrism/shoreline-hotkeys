@@ -1,0 +1,35 @@
+---
+---
+
+// @import "jekyll-theme-minimal";
+@charset 'utf-8';
+@import 'custom'; // variables for bootstrap
+// @import 'bootstrap';
+
+////
+// BOOTSTRAP
+////
+// Core variables and mixins
+@import "bootstrap/custom";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+@import "bootstrap/print";
+
+// Core CSS
+@import "bootstrap/reboot";
+@import "bootstrap/type";
+@import "bootstrap/images";
+@import "bootstrap/code";
+@import "bootstrap/grid";
+// Utility classes
+@import "bootstrap/utilities";
+
+// Code formatting
+@import 'rouge-github';
+
+
+#main { padding-top: 2.5em; }
+#main img {
+  @extend .img-fluid;
+}
