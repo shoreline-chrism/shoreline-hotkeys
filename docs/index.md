@@ -10,3 +10,9 @@ While holding down the *number pad's 0 key*, press the shortcut's modifier (ie -
 </dl>
 
 # Hotstrings
+
+#### WP-CLI
+`wpsr` =>
+````
+wp search-replace '' '' --skip-columns=guid --recurse-objects=guid --all-tables --dry-run  
+````
