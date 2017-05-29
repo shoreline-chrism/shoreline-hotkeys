@@ -2,11 +2,13 @@ title: Hotkey Help
 description: Get things done faster with hotkeys and text expansion
 show_downloads: true
 
-theme: jekyll-theme-shoreline-docs
+theme: minima
 
 sass:
   sass_dir:         _sass
   style:            :compressed
 
 markdown: kramdown
-gems: [bootstrap, autoprefixer-rails, jekyll-assets, jekyll-paginate, jekyll-gist]
+gems: [jekyll-gist, jekyll-paginate, bootstrap, autoprefixer-rails, jekyll-assets]
+
+exclude: [assets/css/style.scss, Gemfile, Gemfile.lock]
