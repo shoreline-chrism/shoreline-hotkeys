@@ -65,6 +65,8 @@ return
   HOTSTRINGS / TEXT EXPANSION
 */
 ; GIT
+:oc:gc::git commit -am "" ;
+:gp:gp::git push origin master  ;
 :oc:gr kleo::git remote add original git@bitbucket.org:shorelinemedia/kleo-base-theme.git	;
 :oc:gr shoreline::git remote add origin git@bitbucket.org:shorelinemedia/	;
 
