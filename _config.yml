@@ -1,5 +1,6 @@
 title: Hotkey Help
 description: Get things done faster with hotkeys and text expansion
+favicon: /favicon.ico
 show_downloads: true
 
 theme: minima
@@ -20,3 +21,7 @@ exclude: [Gemfile, Gemfile.lock]
 
 encoding:             "utf-8"
 markdown_ext:         "markdown,mkdown,mkdn,mkd,md"
+
+# jekyll-assets
+assets:
+  digest: true
