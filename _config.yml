@@ -24,4 +24,4 @@ markdown_ext:         "markdown,mkdown,mkdn,mkd,md"
 
 # jekyll-assets
 assets:
-  digest: true
+  digest: false
