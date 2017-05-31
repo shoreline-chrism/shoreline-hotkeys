@@ -25,3 +25,7 @@ markdown_ext:         "markdown,mkdown,mkdn,mkd,md"
 # jekyll-assets
 assets:
   digest: false
+
+  sources:
+    - _assets/css
+    - _assets/js  

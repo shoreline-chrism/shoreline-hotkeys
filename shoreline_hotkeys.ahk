@@ -8,20 +8,57 @@
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 ;SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-
-/**
- TRAY MENU
-*/
 #Persistent  ; Keep the script running until the user exits it.
 ;#NoTrayIcon
 ;WinSet, Transparent, 255, ahk_class Shell_TrayWnd
 DetectHiddenWindows, On
+
+/**
+ VARIABLES
+*/
+
+SL9WindowTitleEmail := Shoreline Media Marketing Mail
+
+/**
+ FUNCTIONS
+*/
+
+SL9OpenAppURL(MyWin, url, AppOpen:=false)
+; To open with app window, pass 3rd param
+{
+  ;SetTitleMatchMode 2
+  SetTitleMatchMode,RegEx
+  IfWinExist, %MyWin%
+  {
+    WinActivate  ; Automatically uses the window found above.
+    ;WinMaximize  ; same
+  }
+  else
+  {
+    if AppOpen
+      Run, chrome.exe --app=%url%
+    else
+    {
+      Run, chrome.exe %url%
+      WinWait %MyWin%
+      WinMaximize %MyWin%
+    }
+  }
+}
+
+/**
+ TRAY MENU
+*/
 Menu, tray, NoStandard ; Wipe standard menu items
 Menu, tray, icon, shoreline-icon.ico
 Menu, tray, tip, Shoreline Media Marketing
-Menu, tray, add, Hotkey Help, HandlerLaunchHelp
+Menu, tray, add, Hotkey Help, HandlerHelp
 Menu, tray, add
 Menu, tray, add, Gmail (1), HandlerGMail
+Menu, tray, add, Slack (2), HandlerSlack
+Menu, tray, add, Hangouts (3), HandlerHangouts
+Menu, tray, add, Tasks (4), HandlerTasks
+Menu, tray, add, Client Portal (4), HandlerClientPortal
 Menu, tray, add
 Menu, tray, add, Exit, HandlerExit
 return
@@ -35,31 +72,63 @@ return
 */
 
 ; Gmail
-NumPad0 & NumPad1::
-Run, chrome.exe --app=https://mail.google.com/a/shorelinemedianj.com
-WinWait, Gmail
-WinMaximize, Gmail
+#!NumPad1::
+#!1::
+SL9OpenAppURL("Shoreline Media Marketing Mail", "https://mail.google.com/a/shorelinemedianj.com", true)
 return
 
-HandlerGMail:
-Run, chrome.exe --app=https://mail.google.com/a/shorelinemedianj.com
-WinWait, Gmail
-WinMaximize, Gmail
+; Slack
+#!NumPad2::
+#!2::
+SL9OpenAppURL("Slack", "https://shorelinemedia.slack.com", true)
+return
+
+; Hangouts
+#!NumPad3::
+#!3::
+SL9OpenAppURL("Hangouts", "https://hangouts.google.com/hangouts/_/shorelinemedianj.com/")
+return
+
+; Tasks
+#!NumPad4::
+#!4::
+SL9OpenAppURL("Tasks", "https://app.asana.com")
+return
+
+; Tasks
+#!NumPad5::
+#!5::
+SL9OpenAppURL("Social Dashboard", "http://client.shorelinemediamarketing.com/")
 return
 
 /**
  MENU HELPERS
 */
+
+HandlerGMail:
+;MsgBox You selected %A_ThisMenuItem% from menu %A_ThisMenu%.
+SL9OpenAppURL("Shoreline Media Marketing Mail", "https://mail.google.com/a/shorelinemedianj.com", true)
+return
+
 HandlerHelp:
-MsgBox, 1, Hotkey Help, These shortcuts should be used with your right hand on the numberpad of your keyboard.`n`nWhile holding down the numberpad's 0 key`, press the shortcut`'s modifier (ie - +`, 1`, 2`, 3`, etc.) to activate the shortcut.  If you find the hotkeys not working, you should install Google Chrome as your default browser.`n`nPress OK to view the hotkeys or Cancel to close this window.
-IfMsgBox, OK
-  Run chrome.exe --app=https://shoreline-chrism.github.io/shoreline-hotkeys/
+SL9OpenAppURL("Hotkeys", "https://shoreline-chrism.github.io/shoreline-hotkeys/")
 return
 
-HandlerLaunchHelp:
-Run, chrome.exe --app=https://shoreline-chrism.github.io/shoreline-hotkeys/
+HandlerTasks:
+SL9OpenAppURL("Tasks", "https://app.asana.com")
 return
 
+HandlerHangouts:
+SL9OpenAppURL("Hangouts", "https://hangouts.google.com/hangouts/_/shorelinemedianj.com/")
+return
+
+HandlerSlack:
+SL9OpenAppURL("Slack", "https://shorelinemedia.slack.com", true)
+return
+
+HandlerClientPortal:
+SL9OpenAppURL("Social Dashboard", "http://client.shorelinemediamarketing.com/")
+return
 
 /**
   HOTSTRINGS / TEXT EXPANSION
